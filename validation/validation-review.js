@@ -10,34 +10,9 @@ const { validationResult } = require("express-validator");
       return next();
     }
 
-    // res.status(400).json({
-    //     message: 'bad request',
-    //     errors: errors.array().map(err => err.msg)
-    // });
-
+    const msgs = errors.array().map(err => err.msg);
     res.status(400).json({
-      status: 'Bad Request',
-      message: errors.array().map(err => err.msg)[0],
-      
-      // "code": 400,
-      // "className": "bad-request",
-      // "data": {},
-      // errors: errors.array().map(err => {
-      //   return {
-      //     "message": err.msg,
-      //     "type": "notNull Violation",
-      //     "path": "title",
-      //     "value": null,
-      //     "origin": "CORE",
-      //     "instance": {
-      //         "created_at": "2022-05-15T16:11:10.135Z",
-      //         "updated_at": "2022-05-15T16:11:10.135Z",
-      //         "id": null
-      //     },
-      //     "validatorKey": "is_null",
-      //     "validatorName": null,
-      //     "validatorArgs": []
-      //   }
-      // })
-  });
+        status: 'Bad Request',
+        message: msgs[0]
+    });
 };

@@ -10,7 +10,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.sequelize.transaction((t) => {
       const createActivityGroups = queryInterface.createTable(
-        'activity-groups',
+        'activities',
         {
           id: {
             allowNull: false,
@@ -41,7 +41,7 @@ module.exports = {
       );
 
       const createTodoItems = queryInterface.createTable(
-        'todo-items',
+        'todos',
         {
           id: {
             allowNull: false,
@@ -96,8 +96,8 @@ module.exports = {
   down: (queryInterface, Sequelize) => {
     return queryInterface.sequelize.transaction((t) => {
       return Promise.all([
-        queryInterface.dropTable('activity-groups', { transaction: t }),
-        queryInterface.dropTable('todo-items', { transaction: t }),
+        queryInterface.dropTable('activities', { transaction: t }),
+        queryInterface.dropTable('todos', { transaction: t }),
       ]);
     });
   },

@@ -111,7 +111,7 @@ exports.update = async (req, res, next) => {
 };
 
 /** @type {import("express").RequestHandler} */
-exports.remove = (req, res, next) => {
+exports.remove = async (req, res, next) => {
     const { pathId } = req.params; // parameter in path
     const { id } = req.query; // parameter in query for deleting multiple items
 
@@ -119,7 +119,13 @@ exports.remove = (req, res, next) => {
     if (id) {
         delIds = id.split(',');
     } else if (pathId) {
-        delIds.push(pathId);
+        const ag = await ActivityGroup.findByPk(pathId);
+        if (!ag) {
+            return res.status(404).json({
+                status: 'Not Found',
+                message: `Activity with ID ${pathId} Not Found`,
+            });
+        }
     }
     
     if (!delIds.length) {

@@ -19,7 +19,7 @@ class TodoItem extends Model {
         return super.init(this.attr, {
             // Other model options go here
             sequelize: sequelizeInstace, // We need to pass the connection instance
-            tableName: 'todo-items',
+            tableName: 'todos',
             createdAt: 'created_at',
             updatedAt: 'updated_at',
             // updatedAt: false,

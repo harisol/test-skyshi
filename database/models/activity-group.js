@@ -15,7 +15,7 @@ class ActivityGroup extends Model {
         return super.init(this.attr, {
             // Other model options go here
             sequelize: sequelizeInstace, // We need to pass the connection instance
-            tableName: 'activity-groups',
+            tableName: 'activities',
             createdAt: 'created_at',
             updatedAt: 'updated_at',
             // updatedAt: false,

@@ -32,6 +32,15 @@ if (env === 'test') {
     console.log('model has been initialized');
 }
 
+/* get all available tables */
+// sequelizeInstance.getQueryInterface().showAllSchemas().then((tableObj) => {
+//     tableObj.forEach(v => {
+//         for (const key in v) {
+//             console.log('table ', v[key]);
+//         }
+//     })
+// });
+
 module.exports = {
     ...models,
     sequelizeInstance: sequelize

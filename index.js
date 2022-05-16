@@ -29,12 +29,5 @@ if (API_URL && API_URL.includes(':')) {
 }
 
 server.listen(port, host, () => {
-    // sequelizeInstance.getQueryInterface().showAllSchemas().then((tableObj) => {
-    //     tableObj.forEach(v => {
-    //         for (const key in v) {
-    //             console.log('table ', v[key]);
-    //         }
-    //     })
-    // });
     console.log(`Server is live at ${host}:${port} using environment "${server.get('env')}"`)
 });

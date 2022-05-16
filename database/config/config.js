@@ -2,7 +2,7 @@ require('dotenv').config();
 
 module.exports = {
   development: {
-    uri: process.env.MYSQL_HOST_FULL_URI, // A full database URI
+    uri: process.env.MYSQL_FULL_URI, // A full database URI
     host: process.env.MYSQL_HOST,
     username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
