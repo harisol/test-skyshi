@@ -16,7 +16,22 @@ Sucsessfully tested with Node.js v16.13.1
 
 ## Using Docker (Tested on Linux)  
 - Start your MySQL server
-- run on localhost:3030
-`docker run -d --network="host" -e MYSQL_HOST=localhost -e MYSQL_PORT=<port> -e MYSQL_USER=<user> -e MYSQL_PASSWORD=<password> -e MYSQL_DBNAME=<dbname> harisol/skyshi`
-- or on custom port:  
-`docker run -d -p <your_port>:3030 -e MYSQL_HOST=172.17.0.1 -e MYSQL_PORT=<port> -e MYSQL_USER=<user> -e MYSQL_PASSWORD=<password> -e MYSQL_DBNAME=<dbname> harisol/skyshi`
+- run on `localhost:3030` with this:\
+`docker run -d \`\
+`--network="host" \`\
+`-e MYSQL_HOST=localhost \`\
+`-e MYSQL_PORT=<port> \`\
+`-e MYSQL_USER=<user> \`\
+`-e MYSQL_PASSWORD=<password> \`\
+`-e MYSQL_DBNAME=<dbname> \`\
+`harisol/skyshi`
+- or, run on `localhost:<custom_port>`  with this:\
+`docker run -d \`\
+`-p <custom_port>:3030 \`\
+`--add-host=host.docker.internal:host-gateway \`\
+`-e MYSQL_HOST=host.docker.internal \`\
+`-e MYSQL_PORT=<port> \`\
+`-e MYSQL_USER=<user> \`\
+`-e MYSQL_PASSWORD=<password> \`\
+`-e MYSQL_DBNAME=<dbname> \`\
+`harisol/skyshi`

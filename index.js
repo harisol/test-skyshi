@@ -15,19 +15,9 @@ if (!process.env.NODE_ENV) {
     process.env.NODE_ENV='development';
 }
 
-const { sequelizeInstance } = require('./database/models');
 const server = require('./server');
+const port = process.env.SERVER_PORT || 3030;
 
-let host = '0.0.0.0',
-    port = 3030;
-
-const API_URL = process.env.API_URL;
-if (API_URL && API_URL.includes(':')) {
-    const split = API_URL.split(':');
-    host = split[0];
-    port = split[1];
-}
-
-server.listen(port, host, () => {
-    console.log(`Server is live at ${host}:${port} using environment "${server.get('env')}"`)
+server.listen(port, () => {
+    console.log(`Server is running on port ${port} using environment "${server.get('env')}"`)
 });
